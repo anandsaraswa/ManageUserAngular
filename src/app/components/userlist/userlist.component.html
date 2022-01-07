@@ -1,0 +1,69 @@
+<main class="bg-white padd-1" id="main">
+    <div class="container">
+      <h2>User List</h2>
+      <button *ngIf="authService.getRole == 'ROLE_ADMIN'" (click)="openPopup()" class="btn btn-primary float-r">
+        Add User
+      </button>
+      <div class="clear"></div>
+      <div class="row blog-list table-responsive" >
+        <table class="table table-striped ">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Name</th>
+              <th scope="col">Role</th>
+              <th scope="col">Contact</th>
+              <th scope="col">Email</th>
+              <th scope="col">Created On</th>
+              <th scope="col">Action</th>
+            </tr>
+          </thead>
+          <tbody *ngIf="users?.length > 0; else noContacts">
+            <tr *ngFor="let user of users; let i = index" class="cursor">
+              <th scope="row">{{ i + 1 }}</th>
+              <td>{{ user.firstName }} {{ user.lastName }}</td>
+              <td>{{ user.role }}</td>
+              <td>{{ user.phoneNumber }}</td>
+              <td>{{ user.email }}</td>
+              <td>{{ user.created_on | date: 'dd-MMM-yyyy' }}</td>
+              <td>
+                <div>
+                  <button (click)="routeLink(user.id)" class="btn btn-info">
+                    <i class="fa fa-eye"></i>
+                  </button>
+                  <button *ngIf="authService.getRole == 'ROLE_ADMIN'"
+                    class="btn btn-primary margin-left"
+                    (click)="editUser(i)"
+                  >
+                    <i class="fa fa-edit"></i>
+                  </button>
+                  <button *ngIf="authService.getRole == 'ROLE_ADMIN'"
+                    (click)="deleteUser(user.id)"
+                    class="btn btn-danger margin-left"
+                  >
+                    <i class="fa fa-trash"></i>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+          <ng-template #noContacts>
+            <tbody>
+              <tr>
+                <td colspan="6">No Users available</td>
+              </tr>
+            </tbody>
+          </ng-template>
+        </table>
+      </div>
+    </div>
+    <app-adduser
+    [hidden]="showModel"
+    [action]="actionType"
+    [userUpdate]="updateUser"
+    (newItemEvent)="hideEvent($event)"
+    (newUser)="addNewUser($event)"
+  ></app-adduser>
+  </main>
+  <!-- End #main -->
+  

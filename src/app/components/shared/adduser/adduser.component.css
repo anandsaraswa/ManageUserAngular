@@ -1,0 +1,15 @@
+.modal{
+    display: block !important;
+}
+
+.cancle{
+    right: 0px;
+    position: absolute;
+}
+
+.fix-form-height{
+    max-height: 550px;
+    overflow: auto;
+}
+
+

@@ -1,0 +1,10 @@
+{
+  "hosting": {
+    "public": "dist/returnbharo",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}

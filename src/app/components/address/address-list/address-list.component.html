@@ -1,0 +1,49 @@
+
+<div class="table-responsive margin-top">
+    <button *ngIf="userSame" (click)="openPopup()" class="btn btn-primary float-r margin-add-btn">
+        Add Address
+      </button>
+      <div class="clear"></div>
+<table class="table table-striped ">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Address</th>
+      <th scope="col">Pincode</th>
+      <th scope="col">Address Type</th>
+      <th scope="col">City</th>
+      <th scope="col">Created On</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody *ngIf="addresses?.length > 0; else noAddress">
+    <tr *ngFor="let address of addresses; let i = index">
+      <th scope="row">{{ i + 1 }}</th>
+      <td>{{ address.address1 }}</td>
+      <td>{{ address.pincode }}</td>
+      <td>{{ address.addressType }}</td>
+      <td>{{ address.city }}</td>
+      <td>{{ address.created_on | date: 'dd-MMM-yyyy' }}</td>
+      
+      <td *ngIf="userSame">
+        <button class="btn btn-primary margin-left" (click)="editAddress(i)">
+          <i class="fa fa-edit"></i>
+        </button>
+        <button
+          (click)="deleteAddress(address.id)"
+          class="btn btn-danger margin-left"
+        >
+          <i class="fa fa-trash"></i>
+        </button>
+      </td>
+    </tr>
+  </tbody>
+  <ng-template #noAddress>
+    <tbody>
+      <tr>
+        <td colspan="6">No Address available</td>
+      </tr>
+    </tbody>
+  </ng-template>
+</table>
+</div>

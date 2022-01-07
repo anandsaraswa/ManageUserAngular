@@ -1,0 +1,47 @@
+    <div class="row">
+      <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+        <div class="card border-0 shadow rounded-3 my-5">
+            <div [hidden]="requestSent" class="alert alert-danger fade show" role="alert">
+                <strong>Please enter valid Username and Password!</strong>
+                <button type="button" class="close" (click)="hideAlert()" >
+                  <span  >&times;</span>
+                </button>
+              </div>
+          <div class="card-body p-4 p-sm-5">
+            <h5 class="card-title text-center mb-5 fw-light fs-5">Sign In</h5>
+            <form (ngSubmit)="onSubmit(loginF.value)" name="loginF" 
+            #loginF="ngForm">
+              <div class="form-floating mb-3">
+                <label for="floatingInput">Username</label>
+                <input 
+                type="text" 
+                class="form-control"
+                name="username"
+                placeholder="name@example.com"
+                ngModel 
+                #username="ngModel"
+                required
+                email>
+                <span class="help-block" *ngIf="!username.valid && username.touched">Please enter valid Username!</span>
+              </div>
+              <div class="form-floating mb-3">
+                <label for="floatingPassword">Password</label>
+                <input 
+                type="password" 
+                class="form-control" 
+                name="password"
+                placeholder="Password"
+                ngModel 
+                #password="ngModel"
+                required>
+                <span class="help-block" *ngIf="!password.valid && password.touched">Please enter Password!</span>
+              </div>
+              <div class="d-grid">
+                <button class="btn  btn-lg  btn-block  btn-primary btn-login text-uppercase fw-bold" type="submit"   [disabled]="!loginF.valid">Sign
+                  in</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>

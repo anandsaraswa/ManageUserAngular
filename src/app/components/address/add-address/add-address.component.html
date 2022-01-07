@@ -1,0 +1,81 @@
+<div [hidden]="show" class="modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title float-l">{{actionType}} Address</h4>
+          <button type="button" class="btn float-r cancle" (click)="closePopup()">
+            <i class="fa fa-times"></i>
+          </button>
+          <div class="clear"></div>
+        </div>
+        <form [formGroup]="addAddressForm" (ngSubmit)="onSubmit()">
+          <div class="modal-body fix-form-height">
+            <div class="form-floating mb-3">
+              <label for="floatingInput">Address1</label>
+              <input
+                type="text"
+                class="form-control"
+                name="address1"
+                formControlName="address1"
+                placeholder="Address 1"
+              
+              />
+              <span class="help-block" *ngIf="!addAddressForm.get('address1').valid && addAddressForm.get('address1').touched">Please enter Address!</span>
+            </div>
+            <div class="form-floating mb-3">
+              <label for="floatingPincode">Pincode</label>
+              <input
+                type="text"
+                class="form-control"
+                name="pincode"
+                formControlName="pincode"
+                placeholder="Pincode"
+              />
+              <span class="help-block" *ngIf="!addAddressForm.get('pincode').valid && addAddressForm.get('pincode').touched">Please enter Pincode!</span>
+           
+            </div>
+            <div class="form-floating mb-3">
+              <label for="floatingAddressType">Address Type</label>
+              <input
+                type="text"
+                class="form-control"
+                name="addressType"
+                formControlName="addressType"
+                placeholder="Type"
+               
+              />
+              <span class="help-block" *ngIf="!addAddressForm.get('addressType').valid && addAddressForm.get('addressType').touched">Please enter Address Type!</span>
+           
+            </div>
+            <div class="form-floating mb-3">
+              <label for="floatingCity">City</label>
+              <input
+                type="text"
+                class="form-control"
+                name="city"
+                formControlName="city"
+                placeholder="City"
+               
+              />
+              <span class="help-block" *ngIf="!addAddressForm.get('city').valid && addAddressForm.get('city').touched">Please enter City!</span>
+  
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              class="
+                btn btn-lg btn-block btn-primary btn-login
+                text-uppercase
+                fw-bold
+              "
+              [disabled]="!addAddressForm.valid"
+              type="submit"
+            >
+            {{actionType}} Address
+            </button>
+          </div>
+        </form>
+      </div>
+  </div>
+  </div>
+  

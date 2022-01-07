@@ -1,0 +1,145 @@
+<div class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title float-l">{{ action }} User</h4>
+        <button type="button" class="btn float-r cancle" (click)="closePopup()">
+          <i class="fa fa-times"></i>
+        </button>
+        <div class="clear"></div>
+      </div>
+      <form
+        (ngSubmit)="onSubmit(addUserForm.value)"
+        name="addUserForm"
+        #addUserForm="ngForm"
+      >
+        <div class="modal-body fix-form-height">
+       
+          <div class="form-floating mb-3">
+            <label for="floatingInput">First Name</label>
+            <input
+              type="text"
+              class="form-control"
+              name="firstName"
+              placeholder="First Name"
+              ngModel
+              #firstName="ngModel"
+              required
+            />
+            <span
+              class="help-block"
+              *ngIf="!firstName.valid && firstName.touched"
+              >Please enter your First Name!</span
+            >
+          </div>
+          <div class="form-floating mb-3">
+            <label for="floatingInput">Last Name</label>
+            <input
+              type="text"
+              class="form-control"
+              name="lastName"
+              placeholder="Last Name"
+              ngModel
+              #lastName="ngModel"
+              required
+            />
+            <span class="help-block" *ngIf="!lastName.valid && lastName.touched"
+              >Please enter your Last Name!</span
+            >
+          </div>
+          <div class="form-floating mb-3">
+            <label for="floatingInput">Username</label>
+            <input
+              type="email"
+              class="form-control"
+              name="email"
+              placeholder="name@example.com"
+              ngModel
+              #email="ngModel"
+              required
+              email
+            />
+            <span class="help-block" *ngIf="!email.valid && email.touched"
+              >Please enter valid Email!</span
+            >
+          </div>
+          <div class="form-floating mb-3">
+            <label for="floatingPassword">Password</label>
+            <input
+              type="password"
+              class="form-control"
+              name="password"
+              placeholder="Password"
+              ngModel
+              #password="ngModel"
+              required
+            />
+            <span class="help-block" *ngIf="!password.valid && password.touched"
+              >Please enter Password!</span
+            >
+          </div>
+          <div class="form-floating mb-3">
+            <label for="floatingPassword">Confirm Password</label>
+            <input
+              type="password"
+              class="form-control"
+              name="confpassword"
+              placeholder="Confirm Password"
+              ngModel
+              #confpassword="ngModel"
+              required
+            />
+            <span
+              class="help-block"
+              *ngIf="!confpassword.valid && confpassword.touched"
+              >Please enter Confirm Password!</span
+            >
+          </div>
+
+          <div class="form-floating mb-3">
+            <label for="floatingPhone">Phone Number</label>
+            <input
+              type="number"
+              class="form-control"
+              name="phoneNumber"
+              placeholder="Phone Number"
+              ngModel
+              #phoneNumber="ngModel"
+              required
+              pattern=".{10,10}"
+            />
+            <span
+              class="help-block"
+              *ngIf="!phoneNumber.valid && phoneNumber.touched"
+              >Please enter valid Phone Number!</span
+            >
+          </div>
+          <div class="form-floating mb-3">
+            <label class="label" for="heading">Load Image</label>
+            <input
+              type="file"
+              class="form-control"
+              name="image"
+              accept="image/*"
+              (change)="onFileSelected($event)"
+            />
+            <img [src]="imgURL" height="200" *ngIf="imgURL" />
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button
+            class="
+              btn btn-lg btn-block btn-primary btn-login
+              text-uppercase
+              fw-bold
+            "
+            type="submit"
+            [disabled]="!addUserForm.valid"
+          >
+            {{ action }} User
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

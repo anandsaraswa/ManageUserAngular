@@ -1,0 +1,31 @@
+<div class="span3 well bg-white">
+  <div class="row padd-1">
+    <div class="col-lg-3">
+      
+      <img width="100%" [src]="user.image" alt="user.firstName" title="user.firstName">
+    </div>
+    <div class="col-lg-9">
+      <table class="table-responsive">
+        <tr>
+          <td class="bold profile-sep">Name</td>
+          <td class="profile-sep">{{ user.firstName }} {{ user.lastName }}</td>
+        </tr>
+        <td class="bold profile-sep">Email</td>
+        <td class="profile-sep">{{ user.email }}</td>
+        <tr>
+          <td class="bold profile-sep">Phone Number</td>
+          <td class="profile-sep">{{ user.phoneNumber }}</td>
+        </tr>
+        <tr>
+          <td class="bold profile-sep">Role</td>
+          <td class="profile-sep">{{ user.role }}</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <div class="address-data">
+    <app-address-list [userSame] = "userSameOrNot"></app-address-list>
+  </div>
+</div>
+
+<app-add-address  [userId]="userId"  ></app-add-address>
